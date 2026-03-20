@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us — Redneck.co{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero__content">
+      <div class="breadcrumb">
+        <a href="{% url 'home' %}">Home</a>
+        <span class="breadcrumb__sep">›</span>
+        <span>About Us</span>
+      </div>
+      <div class="section-label--white section-label">Our Story</div>
+      <h1>Texas Born.<br/>Texas Proud.</h1>
+      <p>Founded in Austin in 2010, Redneck.co was built on a simple belief — every Texan deserves access to honest, high-quality financial protection and smart investment strategies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Mission -->
+<section class="section">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <div class="section-label">Our Mission</div>
+        <h2>Protecting Texas,<br/>One Family at a Time</h2>
+        <div class="divider"></div>
+        <p class="lead">We started Redneck.co because we were tired of seeing Texans get sold overpriced insurance and underperforming investments by advisors who didn't understand the Texas way of life.</p>
+        <p>We're not a call center. We're not a national chain. We're a Texas company, staffed by Texans, serving the communities we call home. From the Hill Country to the Gulf Coast, from El Paso to Beaumont — we've got Texas covered.</p>
+        <p>Our name says it all. We're plain-spoken, hardworking, and we don't dress up bad products with fancy language. If it's not right for you, we'll tell you straight.</p>
+      </div>
+      <div>
+        <div style="background:var(--navy);border-radius:var(--radius);padding:48px;height:100%;min-height:400px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden">
+          <!-- Eagle watermark -->
+          <svg viewBox="0 0 200 200" style="position:absolute;right:-20px;bottom:-20px;width:200px;opacity:0.06">
+            <ellipse cx="100" cy="120" rx="40" ry="60" fill="white"/>
+            <path d="M60 105 C40 85,10 80,5 90 C20 83,45 95,60 110Z" fill="white"/>
+            <path d="M140 105 C160 85,190 80,195 90 C180 83,155 95,140 110Z" fill="white"/>
+            <ellipse cx="100" cy="70" rx="26" ry="30" fill="white"/>
+            <path d="M100 82 L114 92 L100 95Z" fill="#C9A84C"/>
+          </svg>
+
+          <div>
+            <div style="font-family:var(--font-cond);font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Our Values</div>
+            <div style="display:flex;flex-direction:column;gap:20px">
+              {% for label, desc in values %}
+              {% endfor %}
+              <div style="padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08)">
+                <div style="font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px">Integrity First</div>
+                <div style="font-size:0.85rem;color:rgba(249,247,242,0.55)">We never recommend a product we wouldn't buy ourselves.</div>
+              </div>
+              <div style="padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08)">
+                <div style="font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px">Texas Community</div>
+                <div style="font-size:0.85rem;color:rgba(249,247,242,0.55)">We give back to the Texas communities we serve through local sponsorships and financial literacy programs.</div>
+              </div>
+              <div style="padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08)">
+                <div style="font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px">Plain Talk</div>
+                <div style="font-size:0.85rem;color:rgba(249,247,242,0.55)">No jargon. No fine print surprises. We explain everything in language a rancher from Amarillo would appreciate.</div>
+              </div>
+              <div>
+                <div style="font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px">Long-Term Thinking</div>
+                <div style="font-size:0.85rem;color:rgba(249,247,242,0.55)">We build relationships, not transactions. Our advisors have clients who've been with us since day one.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:32px">
+            <div style="font-family:var(--font-serif);font-size:2rem;font-weight:900;color:var(--gold)">Est. 2010</div>
+            <div style="font-family:var(--font-cond);font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(249,247,242,0.35)">Austin, Texas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats-section section--sm">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <span class="stat-item__num"><span data-count="12" data-suffix=",000+">0</span></span>
+        <span class="stat-item__label">Families Protected</span>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-item__num"><span data-count="15" data-suffix=" yrs">0</span></span>
+        <span class="stat-item__label">Serving Texas</span>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-item__num"><span data-count="42" data-suffix="">0</span></span>
+        <span class="stat-item__label">Licensed Advisors</span>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-item__num"><span data-count="250" data-suffix="M+">0</span></span>
+        <span class="stat-item__label">Claims Paid Out</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="section">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label" style="justify-content:center">Our People</div>
+      <h2>Meet Your Texas Advisors</h2>
+      <div class="divider divider--center"></div>
+      <p class="lead" style="max-width:540px;margin:0 auto">Every Redneck.co advisor is a licensed Texas professional who lives and works in the communities they serve.</p>
+    </div>
+
+    {% if team %}
+    <div class="team-grid">
+      {% for member in team %}
+      <div class="team-card reveal">
+        <div class="team-card__photo">
+          {% if member.photo %}
+          <img src="{{ member.photo.url }}" alt="{{ member.name }}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">
+          {% else %}
+          {{ member.name|slice:":1" }}
+          {% endif %}
+        </div>
+        <div class="team-card__name">{{ member.name }}</div>
+        <div class="team-card__title">{{ member.title }}</div>
+        <p class="team-card__bio">{{ member.bio }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% else %}
+    <!-- Static team display -->
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-card__photo">C</div>
+        <div class="team-card__name">Clay "Buck" Harmon</div>
+        <div class="team-card__title">Founder & CEO</div>
+        <p class="team-card__bio">A fourth-generation Texan from Abilene, Buck founded Redneck.co after 15 years at a national insurance firm. He saw too many Texans paying too much for too little. He fixed that.</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-card__photo">S</div>
+        <div class="team-card__name">Sandra "Sandy" Reeves</div>
+        <div class="team-card__title">VP, Life Insurance</div>
+        <p class="team-card__bio">With 20 years in life insurance underwriting, Sandy knows every clause, rider, and exclusion in the business. She makes sure every Redneck.co client gets maximum value for their dollar.</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-card__photo">D</div>
+        <div class="team-card__name">Dale Hutchinson, CFA</div>
+        <div class="team-card__title">Chief Investment Officer</div>
+        <p class="team-card__bio">Dale's managed Texas family portfolios through three recessions and came out ahead every time. His disciplined, long-horizon approach has earned Redneck.co its investment reputation.</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-card__photo">R</div>
+        <div class="team-card__name">Rosa Martinez</div>
+        <div class="team-card__title">Senior Financial Advisor</div>
+        <p class="team-card__bio">Raised in San Antonio, Rosa is bilingual and serves Texas's growing Hispanic community with the same no-nonsense advice that defines Redneck.co. She has helped over 400 families find the right coverage.</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-card__photo">T</div>
+        <div class="team-card__name">Travis "Trav" Coleman</div>
+        <div class="team-card__title">Retirement Specialist</div>
+        <p class="team-card__bio">Trav spent 10 years as a ranch hand before getting his CFP. He understands what retirement means for a working Texan — and he builds plans that respect that reality.</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-card__photo">J</div>
+        <div class="team-card__name">Janet Olusegun</div>
+        <div class="team-card__title">Estate Planning Advisor</div>
+        <p class="team-card__bio">Janet is a former estate attorney turned advisor. She helps Texas families navigate the complex intersection of insurance, investments, and generational wealth transfer.</p>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner section--sm">
+  <div class="container">
+    <div class="cta-banner__content">
+      <div>
+        <h2>Ready to Work With Real Texans?</h2>
+        <p>No outsourcing. No bots. Just honest advice from people who know your state.</p>
+      </div>
+      <div class="d-flex gap-16 flex-wrap">
+        <a href="{% url 'contact' %}" class="btn btn-gold btn-lg">Talk to an Advisor</a>
+        <a href="{% url 'quote_request' %}" class="btn btn-outline btn-lg">Get a Free Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

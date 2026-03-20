@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{% block meta_desc %}Redneck.co — Texas-built life insurance and investment services. Protecting Texas families with American strength and integrity since 2010.{% endblock %}" />
+  <title>{% block title %}Redneck.co — Texas Built. American Strong.{% endblock %}</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  {% block extra_css %}{% endblock %}
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230A1628'/><text x='50%' y='68%' font-size='18' text-anchor='middle' fill='%23C9A84C' font-family='serif' font-weight='900'>R</text></svg>" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="navbar__inner">
+
+        <!-- Logo -->
+        <a href="{% url 'home' %}" class="navbar__logo">
+          <svg class="navbar__logo-mark" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="44" height="44" rx="4" fill="#0A1628"/>
+            <!-- Eagle silhouette simplified -->
+            <path d="M22 8 C20 10, 14 11, 12 14 C10 17, 14 18, 16 18 L14 22 C12 24, 10 26, 11 28 C12 30, 15 29, 17 27 L22 32 L27 27 C29 29, 32 30, 33 28 C34 26, 32 24, 30 22 L28 18 C30 18, 34 17, 32 14 C30 11, 24 10, 22 8Z" fill="#C9A84C" opacity="0.9"/>
+            <path d="M22 10 L22 30" stroke="#B22234" stroke-width="1.5" opacity="0.6"/>
+          </svg>
+          <div class="navbar__logo-text">
+            <span class="navbar__brand">Redneck.co</span>
+            <span class="navbar__tagline">Austin, Texas · Est. 2010</span>
+          </div>
+        </a>
+
+        <!-- Nav Links -->
+        <div class="navbar__nav" id="navbar-nav">
+          <a href="{% url 'home' %}" class="navbar__link">Home</a>
+          <a href="{% url 'about' %}" class="navbar__link">About</a>
+          <a href="{% url 'insurance_home' %}" class="navbar__link">Insurance</a>
+          <a href="{% url 'investments_home' %}" class="navbar__link">Investments</a>
+          <a href="{% url 'services' %}" class="navbar__link">Services</a>
+          <a href="{% url 'contact' %}" class="navbar__link">Contact</a>
+          {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}" class="navbar__cta">Dashboard</a>
+          {% else %}
+            <a href="{% url 'quote_request' %}" class="navbar__cta">Get a Quote</a>
+          {% endif %}
+        </div>
+
+        <!-- Mobile Toggle -->
+        <button class="navbar__toggle" id="nav-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== MESSAGES ===== -->
+  {% if messages %}
+  <div class="messages-container">
+    {% for message in messages %}
+    <div class="message-item message-item--{{ message.tags|default:'success' }}">
+      <svg viewBox="0 0 20 20" fill="currentColor" style="width:18px;height:18px;flex-shrink:0">
+        {% if message.tags == 'error' %}
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+        {% else %}
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+        {% endif %}
+      </svg>
+      {{ message }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__main">
+
+        <!-- Brand -->
+        <div>
+          <div class="footer__brand-name">Redneck.co</div>
+          <div class="footer__brand-tagline">Austin, Texas · Est. 2010</div>
+          <p class="footer__desc">
+            Born in Texas, built for Texans. We deliver honest, straightforward life insurance and investment services rooted in the values that built this great state — hard work, integrity, and looking out for your own.
+          </p>
+          <div class="d-flex gap-16 flex-wrap">
+            <span style="font-family:var(--font-cond);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(249,247,242,0.35);">Licensed in Texas</span>
+            <span style="color:rgba(249,247,242,0.15);">|</span>
+            <span style="font-family:var(--font-cond);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(249,247,242,0.35);">FINRA Member</span>
+            <span style="color:rgba(249,247,242,0.15);">|</span>
+            <span style="font-family:var(--font-cond);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(249,247,242,0.35);">SIPC Insured</span>
+          </div>
+        </div>
+
+        <!-- Insurance Links -->
+        <div>
+          <div class="footer__col-title">Life Insurance</div>
+          <ul class="footer__links">
+            <li><a href="{% url 'insurance_home' %}" class="footer__link">All Products</a></li>
+            <li><a href="{% url 'insurance_home' %}" class="footer__link">Term Life</a></li>
+            <li><a href="{% url 'insurance_home' %}" class="footer__link">Whole Life</a></li>
+            <li><a href="{% url 'insurance_home' %}" class="footer__link">Universal Life</a></li>
+            <li><a href="{% url 'insurance_home' %}" class="footer__link">Final Expense</a></li>
+            <li><a href="{% url 'quote_request' %}" class="footer__link">Get a Quote</a></li>
+          </ul>
+        </div>
+
+        <!-- Investment Links -->
+        <div>
+          <div class="footer__col-title">Investments</div>
+          <ul class="footer__links">
+            <li><a href="{% url 'investments_home' %}" class="footer__link">All Services</a></li>
+            <li><a href="{% url 'investments_home' %}" class="footer__link">Retirement (IRA/401k)</a></li>
+            <li><a href="{% url 'investments_home' %}" class="footer__link">Managed Portfolios</a></li>
+            <li><a href="{% url 'investments_home' %}" class="footer__link">Annuities</a></li>
+            <li><a href="{% url 'investments_home' %}" class="footer__link">ETF Portfolios</a></li>
+            <li><a href="{% url 'consultation_request' %}" class="footer__link">Free Consultation</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <div class="footer__col-title">Contact Us</div>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            <span>(512) 555-0178</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+            <span>hello@redneck.co</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            <span>1700 Congress Ave,<br/>Austin, TX 78701</span>
+          </div>
+          <div style="margin-top:20px">
+            <a href="{% url 'contact' %}" class="btn btn-outline btn-sm">Send a Message</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <div style="font-size:0.8rem;">
+          &copy; {{ "now"|date:"Y" }} Redneck.co. All rights reserved. Securities offered through Redneck Financial Services, LLC. Insurance products underwritten by licensed Texas carriers.
+        </div>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Disclosures</a>
+        </div>
+        <div class="footer__flag">
+          <svg viewBox="0 0 20 16" width="24" style="border-radius:2px">
+            <rect width="20" height="16" fill="#B22234"/>
+            <rect y="0" width="20" height="1.23" fill="#B22234"/>
+            <rect y="1.23" width="20" height="1.23" fill="#F9F7F2"/>
+            <rect y="2.46" width="20" height="1.23" fill="#B22234"/>
+            <rect y="3.69" width="20" height="1.23" fill="#F9F7F2"/>
+            <rect y="4.92" width="20" height="1.23" fill="#B22234"/>
+            <rect y="6.15" width="20" height="1.23" fill="#F9F7F2"/>
+            <rect y="7.38" width="20" height="1.23" fill="#B22234"/>
+            <rect y="8.61" width="20" height="1.23" fill="#F9F7F2"/>
+            <rect y="9.84" width="20" height="1.23" fill="#B22234"/>
+            <rect y="11.07" width="20" height="1.23" fill="#F9F7F2"/>
+            <rect y="12.3" width="20" height="1.23" fill="#B22234"/>
+            <rect y="13.53" width="20" height="1.23" fill="#F9F7F2"/>
+            <rect width="8" height="8.61" fill="#0A1628"/>
+          </svg>
+          Proudly American
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="{% static 'js/main.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

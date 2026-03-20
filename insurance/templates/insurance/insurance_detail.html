@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} — Redneck.co{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero__content">
+      <div class="breadcrumb">
+        <a href="{% url 'home' %}">Home</a>
+        <span class="breadcrumb__sep">›</span>
+        <a href="{% url 'insurance_home' %}">Life Insurance</a>
+        <span class="breadcrumb__sep">›</span>
+        <span>{{ product.name }}</span>
+      </div>
+      <div class="section-label--white section-label">{{ product.get_product_type_display }}</div>
+      <h1>{{ product.name }}</h1>
+      <p>{{ product.tagline }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="detail-grid">
+      <div>
+        <h2 style="margin-bottom:16px">About This Plan</h2>
+        <div class="divider" style="margin-bottom:24px"></div>
+        <p style="font-size:1rem;line-height:1.9;color:var(--text-muted)">{{ product.description }}</p>
+
+        <h3 style="margin-top:48px;margin-bottom:20px">Plan Features</h3>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          {% for feature in product.get_features_list %}
+          <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 18px;background:var(--off-white);border-radius:var(--radius-sm)">
+            <svg viewBox="0 0 20 20" fill="currentColor" style="width:18px;height:18px;color:var(--red);flex-shrink:0;margin-top:2px">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span style="font-size:0.93rem;color:var(--text)">{{ feature }}</span>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:48px">
+          <div style="padding:24px;background:var(--off-white);border-radius:var(--radius-sm)">
+            <div style="font-family:var(--font-cond);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray);margin-bottom:6px">Eligible Ages</div>
+            <div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--navy)">{{ product.min_age }} – {{ product.max_age }}</div>
+          </div>
+          <div style="padding:24px;background:var(--off-white);border-radius:var(--radius-sm)">
+            <div style="font-family:var(--font-cond);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray);margin-bottom:6px">Coverage Range</div>
+            <div style="font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--navy)">${{ product.min_coverage|floatformat:0 }} – ${{ product.max_coverage|floatformat:0 }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-sidebar">
+        <div class="sidebar-card">
+          <h3>Get Your Quote</h3>
+          <p style="color:rgba(249,247,242,0.6);font-size:0.88rem;margin-bottom:28px">A licensed Texas advisor will prepare your personalized quote within 24 hours.</p>
+
+          <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <svg viewBox="0 0 20 20" fill="currentColor" style="width:16px;height:16px;color:var(--gold);flex-shrink:0">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span style="font-size:0.88rem;color:rgba(249,247,242,0.7)">No obligation quote</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <svg viewBox="0 0 20 20" fill="currentColor" style="width:16px;height:16px;color:var(--gold);flex-shrink:0">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span style="font-size:0.88rem;color:rgba(249,247,242,0.7)">Response within 24 hours</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <svg viewBox="0 0 20 20" fill="currentColor" style="width:16px;height:16px;color:var(--gold);flex-shrink:0">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span style="font-size:0.88rem;color:rgba(249,247,242,0.7)">Licensed Texas advisor</span>
+            </div>
+          </div>
+
+          <a href="{% url 'quote_request_product' product.pk %}" class="btn btn-primary w-100" style="margin-bottom:12px">
+            Get a Free Quote
+          </a>
+          <a href="{% url 'contact' %}" class="btn btn-outline w-100">Ask a Question</a>
+
+          <div style="margin-top:24px;text-align:center">
+            <div style="font-family:var(--font-cond);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(249,247,242,0.35)">Call us directly</div>
+            <div style="font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-top:4px">(512) 555-0178</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

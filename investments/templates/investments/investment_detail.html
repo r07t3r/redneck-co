@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} — Redneck.co{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero__content">
+      <div class="breadcrumb">
+        <a href="{% url 'home' %}">Home</a>
+        <span class="breadcrumb__sep">›</span>
+        <a href="{% url 'investments_home' %}">Investments</a>
+        <span class="breadcrumb__sep">›</span>
+        <span>{{ product.name }}</span>
+      </div>
+      <div class="section-label--white section-label">{{ product.get_product_type_display }}</div>
+      <h1>{{ product.name }}</h1>
+      <p>{{ product.tagline }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="detail-grid">
+      <div>
+        <div class="d-flex align-center gap-16" style="margin-bottom:28px">
+          <span class="risk-badge risk-badge--{{ product.risk_level }}">{{ product.get_risk_level_display }}</span>
+          <span style="font-family:var(--font-cond);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray)">
+            Est. {{ product.expected_return_low }}–{{ product.expected_return_high }}% Annual Return
+          </span>
+        </div>
+
+        <h2 style="margin-bottom:16px">About This Investment</h2>
+        <div class="divider" style="margin-bottom:24px"></div>
+        <p style="font-size:1rem;line-height:1.9;color:var(--text-muted)">{{ product.description }}</p>
+
+        <h3 style="margin-top:48px;margin-bottom:20px">Key Features</h3>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          {% for feature in product.get_features_list %}
+          <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 18px;background:var(--off-white);border-radius:var(--radius-sm)">
+            <svg viewBox="0 0 20 20" fill="currentColor" style="width:18px;height:18px;color:var(--red);flex-shrink:0;margin-top:2px">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span style="font-size:0.93rem;color:var(--text)">{{ feature }}</span>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div style="margin-top:48px;padding:28px;background:var(--navy);border-radius:var(--radius);color:rgba(249,247,242,0.7);font-size:0.82rem;line-height:1.8">
+          <strong style="color:var(--gold);font-family:var(--font-cond);letter-spacing:0.1em;text-transform:uppercase;font-size:0.75rem">Important Disclosure</strong><br/>
+          Investment products involve risk, including possible loss of principal. Past performance does not guarantee future results. Expected return ranges are estimates based on historical data and are not guaranteed. Please consult your Redneck.co advisor before making investment decisions.
+        </div>
+      </div>
+
+      <div class="detail-sidebar">
+        <div class="sidebar-card">
+          <h3>Investment Summary</h3>
+
+          <div style="display:flex;flex-direction:column;gap:18px;margin-bottom:32px">
+            <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <span style="font-family:var(--font-cond);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(249,247,242,0.45)">Type</span>
+              <span style="font-size:0.9rem;font-weight:600;color:var(--white)">{{ product.get_product_type_display }}</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <span style="font-family:var(--font-cond);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(249,247,242,0.45)">Risk Level</span>
+              <span style="font-size:0.9rem;font-weight:600;color:var(--gold)">{{ product.get_risk_level_display }}</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <span style="font-family:var(--font-cond);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(249,247,242,0.45)">Est. Return</span>
+              <span style="font-size:0.9rem;font-weight:600;color:var(--white)">{{ product.expected_return_low }}–{{ product.expected_return_high }}% / yr</span>
+            </div>
+            <div style="display:flex;justify-content:space-between">
+              <span style="font-family:var(--font-cond);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(249,247,242,0.45)">Min. Investment</span>
+              <span style="font-size:0.9rem;font-weight:600;color:var(--gold)">${{ product.min_investment|floatformat:0 }}</span>
+            </div>
+          </div>
+
+          <a href="{% url 'consultation_request_product' product.pk %}" class="btn btn-primary w-100" style="margin-bottom:12px">
+            Get Started Today
+          </a>
+          <a href="{% url 'contact' %}" class="btn btn-outline w-100">Ask a Question</a>
+
+          <div style="margin-top:24px;text-align:center">
+            <div style="font-family:var(--font-cond);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(249,247,242,0.35)">Questions? Call us</div>
+            <div style="font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-top:4px">(512) 555-0178</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Life Insurance — Redneck.co{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero__content">
+      <div class="breadcrumb">
+        <a href="{% url 'home' %}">Home</a>
+        <span class="breadcrumb__sep">›</span>
+        <span>Life Insurance</span>
+      </div>
+      <div class="section-label--white section-label">Life Insurance</div>
+      <h1>Protect Your<br/>Texas Family</h1>
+      <p>Honest coverage, competitive rates, and a team that fights for you when it matters most. Find the right life insurance plan for your family today.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="text-center" style="margin-bottom:56px">
+      <div class="section-label" style="justify-content:center">Our Plans</div>
+      <h2>Life Insurance Built for Texans</h2>
+      <div class="divider divider--center"></div>
+      <p class="lead" style="max-width:540px;margin:0 auto">Every family is different. We offer a full range of life insurance products so you can find exactly the right fit.</p>
+    </div>
+
+    {% if products %}
+    <div class="services-grid">
+      {% for product in products %}
+      <div class="product-card {% if product.is_featured %}featured{% endif %} reveal">
+        <div class="product-card__header">
+          {% if product.is_featured %}<div class="product-card__badge">Most Popular</div>{% endif %}
+          <div class="product-card__type">{{ product.get_product_type_display }}</div>
+          <div class="product-card__name">{{ product.name }}</div>
+          <p class="product-card__tagline">{{ product.tagline }}</p>
+        </div>
+        <div class="product-card__body">
+          <p style="font-size:0.9rem;">{{ product.description|truncatewords:30 }}</p>
+          <div class="product-card__features">
+            {% for feature in product.get_features_list %}
+            <div class="product-card__feature">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              {{ feature }}
+            </div>
+            {% endfor %}
+          </div>
+          <div class="product-card__coverage">
+            <div class="product-card__coverage-label">Coverage Range</div>
+            <div class="product-card__coverage-value">${{ product.min_coverage|floatformat:0 }} – ${{ product.max_coverage|floatformat:0 }}</div>
+          </div>
+        </div>
+        <div class="product-card__actions">
+          <a href="{% url 'quote_request_product' product.pk %}" class="btn btn-primary btn-sm w-100">Get a Quote</a>
+          <a href="{% url 'insurance_detail' product.pk %}" class="btn btn-navy btn-sm">Details</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% else %}
+    <!-- Default product display when no DB products yet -->
+    <div class="services-grid">
+
+      <div class="product-card featured reveal">
+        <div class="product-card__header">
+          <div class="product-card__badge">Most Popular</div>
+          <div class="product-card__type">Term Life Insurance</div>
+          <div class="product-card__name">Texas Term Shield</div>
+          <p class="product-card__tagline">Straightforward protection for the years that matter most</p>
+        </div>
+        <div class="product-card__body">
+          <p style="font-size:0.9rem;">Pure death benefit protection for a set term — 10, 20, or 30 years. The most affordable way to get substantial coverage for your family.</p>
+          <div class="product-card__features">
+            <div class="product-card__feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Guaranteed level premiums</div>
+            <div class="product-card__feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Convertible to permanent coverage</div>
+            <div class="product-card__feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Accelerated death benefit rider</div>
+            <div class="product-card__feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>No medical exam options available</div>
+          </div>
+          <div class="product-card__coverage">
+            <div class="product-card__coverage-label">Coverage Range</div>
+            <div class="product-card__coverage-value">$100,000 – $5,000,000</div>
+          </div>
+        </div>
+        <div class="product-card__actions">
+          <a href="{% url 'quote_request' %}" class="btn btn-primary btn-sm w-100">Get a Quote</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-card__header">
+          <div class="product-card__type">Whole Life Insurance</div>
+          <div class="product-card__name">Lone Star Whole Life</div>
+          <p class="product-card__tagline">Lifelong protection with built-in cash value</p>
+        </div>
+        <div class="product-card__body">
+          <p style="font-size:0.9rem;">Permanent coverage that builds tax-deferred cash value over time. A true Texas investment in your family's future.</p>
+          <div class="product-card__features">
+            <div class="product-card__feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Guaranteed death benefit</div>
+            <div class="product-card__feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Tax-deferred cash value growth</div>
+            <div class="product-card__feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Policy loan availability</div>
+            <div class="product-card__feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Dividend participation eligibility</div>
+          </div>
+          <div class="product-card__coverage">
+            <div class="product-card__coverage-label">Coverage Range</div>
+            <div class="product-card__coverage-value">$50,000 – $2,000,000</div>
+          </div>
+        </div>
+        <div class="product-card__actions">
+          <a href="{% url 'quote_request' %}" class="btn btn-primary btn-sm w-100">Get a Quote</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-card__header">
+          <div class="product-card__type">Final Expense Insurance</div>
+          <div class="product-card__name">Texas Legacy Plan</div>
+          <p class="product-card__tagline">Protect your loved ones from end-of-life costs</p>
+        </div>
+        <div class="product-card__body">
+          <p style="font-size:0.9rem;">Affordable whole life insurance designed for Texans 50–85. No medical exam required. Guaranteed acceptance for qualifying applicants.</p>
+          <div class="product-card__features">
+            <div class="product-card__feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>No medical exam required</div>
+            <div class="product-card__feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Guaranteed acceptance ages 50–85</div>
+            <div class="product-card__feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Fixed monthly premiums for life</div>
+            <div class="product-card__feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Covers funeral & burial costs</div>
+          </div>
+          <div class="product-card__coverage">
+            <div class="product-card__coverage-label">Coverage Range</div>
+            <div class="product-card__coverage-value">$5,000 – $25,000</div>
+          </div>
+        </div>
+        <div class="product-card__actions">
+          <a href="{% url 'quote_request' %}" class="btn btn-primary btn-sm w-100">Get a Quote</a>
+        </div>
+      </div>
+
+    </div>
+    {% endif %}
+
+    <!-- CTA -->
+    <div class="text-center mt-56">
+      <h3>Not Sure Which Plan Is Right for You?</h3>
+      <p class="lead mt-16">Our licensed Texas advisors will walk you through every option — no pressure, no jargon.</p>
+      <div class="d-flex gap-16 flex-wrap" style="justify-content:center;margin-top:28px">
+        <a href="{% url 'quote_request' %}" class="btn btn-primary btn-lg">Get a Free Quote</a>
+        <a href="{% url 'contact' %}" class="btn btn-navy btn-lg">Talk to an Advisor</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

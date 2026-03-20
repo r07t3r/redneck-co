@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Get a Life Insurance Quote — Redneck.co{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero__content">
+      <div class="breadcrumb">
+        <a href="{% url 'home' %}">Home</a>
+        <span class="breadcrumb__sep">›</span>
+        <a href="{% url 'insurance_home' %}">Life Insurance</a>
+        <span class="breadcrumb__sep">›</span>
+        <span>Get a Quote</span>
+      </div>
+      <h1>Request Your Free Quote</h1>
+      {% if product %}
+      <p>Requesting a quote for: <strong style="color:var(--gold)">{{ product.name }}</strong></p>
+      {% else %}
+      <p>Fill out the form below and a licensed Texas advisor will contact you within one business day with your personalized quote.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="form-section section">
+  <div class="container">
+    <div class="form-box">
+      <div class="section-label">Quote Request</div>
+      <h2 style="margin-bottom:8px">Personal Information</h2>
+      <p style="margin-bottom:36px">All information is kept strictly confidential and used only to generate your quote.</p>
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+
+        <div class="form-row" style="margin-bottom:20px">
+          <div class="form-group">
+            <label class="form-label">First Name *</label>
+            {{ form.first_name }}
+            {% if form.first_name.errors %}<small style="color:var(--red)">{{ form.first_name.errors.0 }}</small>{% endif %}
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name *</label>
+            {{ form.last_name }}
+            {% if form.last_name.errors %}<small style="color:var(--red)">{{ form.last_name.errors.0 }}</small>{% endif %}
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-bottom:20px">
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            {{ form.email }}
+            {% if form.email.errors %}<small style="color:var(--red)">{{ form.email.errors.0 }}</small>{% endif %}
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number *</label>
+            {{ form.phone }}
+            {% if form.phone.errors %}<small style="color:var(--red)">{{ form.phone.errors.0 }}</small>{% endif %}
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-bottom:20px">
+          <div class="form-group">
+            <label class="form-label">Date of Birth *</label>
+            {{ form.date_of_birth }}
+          </div>
+          <div class="form-group">
+            <label class="form-label">Gender *</label>
+            {{ form.gender }}
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-bottom:20px">
+          <div class="form-group">
+            <label class="form-label">Health Status *</label>
+            {{ form.health_status }}
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tobacco Use *</label>
+            {{ form.tobacco_use }}
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:20px">
+          <label class="form-label">Desired Coverage Amount ($) *</label>
+          {{ form.coverage_amount }}
+          <small style="color:var(--gray);font-size:0.8rem">Enter the dollar amount you wish to be covered for (e.g. 500000 for $500,000)</small>
+        </div>
+
+        <div class="form-group" style="margin-bottom:36px">
+          <label class="form-label">Additional Notes</label>
+          {{ form.additional_notes }}
+        </div>
+
+        <div style="background:var(--off-white);border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:28px;font-size:0.82rem;color:var(--text-muted)">
+          <strong style="color:var(--navy)">Disclosure:</strong> By submitting this form, you consent to being contacted by a licensed Redneck.co advisor regarding life insurance products. Your information is never sold to third parties.
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg w-100">
+          Submit Quote Request
+          <svg viewBox="0 0 20 20" fill="currentColor" style="width:18px;height:18px">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

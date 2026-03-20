@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Services — Redneck.co{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero__content">
+      <div class="breadcrumb">
+        <a href="{% url 'home' %}">Home</a>
+        <span class="breadcrumb__sep">›</span>
+        <span>Services</span>
+      </div>
+      <div class="section-label--white section-label">What We Offer</div>
+      <h1>Full-Service Financial<br/>Protection for Texas</h1>
+      <p>Life insurance, investments, retirement planning, and estate services — all under one Texas roof.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Insurance Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Life Insurance</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:48px">
+      <div>
+        <h2>Life Insurance Plans</h2>
+        <div class="divider" style="margin-bottom:0"></div>
+      </div>
+      <a href="{% url 'insurance_home' %}" class="btn btn-navy">View All Plans</a>
+    </div>
+
+    {% if insurance_products %}
+    <div class="services-grid">
+      {% for product in insurance_products %}
+      <div class="card reveal">
+        <div class="card-body">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:26px;height:26px">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+            </svg>
+          </div>
+          <div style="font-family:var(--font-cond);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray);margin-bottom:6px">{{ product.get_product_type_display }}</div>
+          <h3>{{ product.name }}</h3>
+          <p style="font-size:0.9rem">{{ product.tagline }}</p>
+          <div style="margin-top:20px;display:flex;gap:12px">
+            <a href="{% url 'quote_request_product' product.pk %}" class="btn btn-primary btn-sm">Get Quote</a>
+            <a href="{% url 'insurance_detail' product.pk %}" class="btn btn-navy btn-sm">Details</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div style="text-align:center;padding:60px;background:var(--off-white);border-radius:var(--radius)">
+      <p style="margin-bottom:20px">No insurance products configured yet. Add them via the admin panel.</p>
+      <a href="{% url 'insurance_home' %}" class="btn btn-primary">Browse Insurance</a>
+    </div>
+    {% endif %}
+</div>
+</section>
+
+<!-- Investments Section -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-label">Investments</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:48px">
+      <div>
+        <h2>Investment Services</h2>
+        <div class="divider" style="margin-bottom:0"></div>
+      </div>
+      <a href="{% url 'investments_home' %}" class="btn btn-navy">View All Services</a>
+    </div>
+
+    {% if investment_products %}
+    <div class="services-grid">
+      {% for product in investment_products %}
+      <div class="card reveal">
+        <div class="card-body">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:26px;height:26px">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/>
+            </svg>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <div style="font-family:var(--font-cond);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray)">{{ product.get_product_type_display }}</div>
+            <span class="risk-badge risk-badge--{{ product.risk_level }}">{{ product.get_risk_level_display }}</span>
+          </div>
+          <h3>{{ product.name }}</h3>
+          <p style="font-size:0.9rem">{{ product.tagline }}</p>
+          <div style="margin-top:20px;display:flex;gap:12px">
+            <a href="{% url 'consultation_request_product' product.pk %}" class="btn btn-primary btn-sm">Get Started</a>
+            <a href="{% url 'investment_detail' product.pk %}" class="btn btn-navy btn-sm">Details</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div style="text-align:center;padding:60px;background:var(--off-white);border-radius:var(--radius)">
+      <p style="margin-bottom:20px">No investment products configured yet. Add them via the admin panel.</p>
+      <a href="{% url 'investments_home' %}" class="btn btn-primary">Browse Investments</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner section--sm">
+  <div class="container">
+    <div class="cta-banner__content">
+      <div>
+        <h2>Not Sure Where to Start?</h2>
+        <p>Our advisors will assess your full financial picture and recommend the right mix of insurance and investments for your situation.</p>
+      </div>
+      <a href="{% url 'contact' %}" class="btn btn-gold btn-lg">Schedule a Free Review</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

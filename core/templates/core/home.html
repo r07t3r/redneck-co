@@ -1,0 +1,430 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Redneck.co — Texas Built. American Strong.{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero__bg"></div>
+
+  <!-- Giant Eagle Watermark -->
+  <svg class="hero__eagle" viewBox="0 0 600 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Eagle body -->
+    <ellipse cx="300" cy="270" rx="80" ry="110" fill="white"/>
+    <!-- Wings spread -->
+    <path d="M220 240 C180 200, 100 180, 40 200 C80 190, 120 220, 150 250 C120 240, 80 250, 50 270 C90 255, 140 265, 170 285 C140 280, 100 295, 80 310 C120 295, 170 300, 200 310 L220 270Z" fill="white"/>
+    <path d="M380 240 C420 200, 500 180, 560 200 C520 190, 480 220, 450 250 C480 240, 520 250, 550 270 C510 255, 460 265, 430 285 C460 280, 500 295, 520 310 C480 295, 430 300, 400 310 L380 270Z" fill="white"/>
+    <!-- Head -->
+    <ellipse cx="300" cy="170" rx="42" ry="50" fill="white"/>
+    <!-- Beak -->
+    <path d="M300 185 L320 200 L300 205 Z" fill="#C9A84C"/>
+    <!-- Eye -->
+    <circle cx="312" cy="168" r="6" fill="#0A1628"/>
+    <circle cx="314" cy="166" r="2" fill="white"/>
+    <!-- Tail feathers -->
+    <path d="M260 370 C270 400, 280 420, 300 430 C320 420, 330 400, 340 370Z" fill="white"/>
+    <path d="M245 365 C250 395, 260 415, 280 428" stroke="white" stroke-width="8" stroke-linecap="round"/>
+    <path d="M355 365 C350 395, 340 415, 320 428" stroke="white" stroke-width="8" stroke-linecap="round"/>
+    <!-- Talons -->
+    <path d="M275 375 L260 400 M275 375 L268 405 M275 375 L278 408" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+    <path d="M325 375 L340 400 M325 375 L332 405 M325 375 L322 408" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+    <!-- Stars on wings -->
+    <text x="120" y="250" font-size="20" fill="#C9A84C" opacity="0.5" text-anchor="middle">★</text>
+    <text x="480" y="250" font-size="20" fill="#C9A84C" opacity="0.5" text-anchor="middle">★</text>
+    <text x="90" y="290" font-size="14" fill="#C9A84C" opacity="0.4" text-anchor="middle">★</text>
+    <text x="510" y="290" font-size="14" fill="#C9A84C" opacity="0.4" text-anchor="middle">★</text>
+    <!-- Shield on chest -->
+    <path d="M282 240 L318 240 L325 295 L300 315 L275 295Z" fill="#B22234" opacity="0.7"/>
+    <path d="M290 240 L310 240 L316 292 L300 310 L284 292Z" fill="#F9F7F2" opacity="0.5"/>
+    <path d="M294 240 L306 240 L311 290 L300 306 L289 290Z" fill="#0A1628" opacity="0.5"/>
+  </svg>
+
+  <div class="hero__flag-stripe"></div>
+
+  <div class="container">
+    <div class="hero__content">
+      <div class="hero__eyebrow animate-fadeup">
+        Texas-Built Financial Services
+      </div>
+      <h1 class="hero__heading animate-fadeup animate-fadeup--delay-1">
+        Protect What<br/>
+        <em>Matters Most</em><br/>
+        to Texans
+      </h1>
+      <p class="hero__sub animate-fadeup animate-fadeup--delay-2">
+        Life insurance and investment services built on honesty, integrity, and the Texas tradition of looking after your own. No nonsense. Just results.
+      </p>
+      <div class="hero__actions animate-fadeup animate-fadeup--delay-3">
+        <a href="{% url 'quote_request' %}" class="btn btn-primary btn-lg">
+          <svg viewBox="0 0 20 20" fill="currentColor" style="width:18px;height:18px">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          Get Your Free Quote
+        </a>
+        <a href="{% url 'consultation_request' %}" class="btn btn-outline btn-lg">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Year badge -->
+  <div class="hero__badge">
+    <div class="hero__badge-circle">
+      <span class="hero__badge-num">15+</span>
+      <span class="hero__badge-label">Years Serving Texas</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST BAR ===== -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-bar__inner">
+
+      <div class="trust-item">
+        <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+        </svg>
+        <div class="trust-item__text">
+          <strong>Licensed & Regulated</strong>
+          <span>Texas Department of Insurance</span>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/>
+        </svg>
+        <div class="trust-item__text">
+          <strong>12,000+ Texas Families</strong>
+          <span>Protected and Growing</span>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/>
+        </svg>
+        <div class="trust-item__text">
+          <strong>$2.4B+ Assets Managed</strong>
+          <span>Across Texas Portfolios</span>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/>
+        </svg>
+        <div class="trust-item__text">
+          <strong>A+ Rated Service</strong>
+          <span>BBB Accredited Business</span>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+        </svg>
+        <div class="trust-item__text">
+          <strong>Texas-Owned & Operated</strong>
+          <span>Austin, TX Headquarters</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label" style="justify-content:center">Our Services</div>
+      <h2>Built for the Texas Way of Life</h2>
+      <div class="divider divider--center"></div>
+      <p class="lead" style="max-width:580px;margin:0 auto">
+        From protecting your family with the right life insurance, to growing your wealth through smart investments — we do it all with Texas straight-talk.
+      </p>
+    </div>
+
+    <div class="services-grid mt-56">
+
+      <div class="card reveal">
+        <div class="card-body">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:26px;height:26px">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+            </svg>
+          </div>
+          <h3>Life Insurance</h3>
+          <p>Term, whole, universal, and final expense life insurance. We shop the top carriers so you get maximum coverage at a price that makes sense for a Texas family budget.</p>
+          <a href="{% url 'insurance_home' %}" class="btn btn-primary btn-sm mt-24">Explore Plans</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-body">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:26px;height:26px">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/>
+            </svg>
+          </div>
+          <h3>Investment Services</h3>
+          <p>Managed portfolios, IRAs, 401(k) rollovers, and annuities tailored to your goals and risk tolerance. We invest the same way Texans do — with conviction and long-term vision.</p>
+          <a href="{% url 'investments_home' %}" class="btn btn-primary btn-sm mt-24">View Investments</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-body">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:26px;height:26px">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.97zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.97z"/>
+            </svg>
+          </div>
+          <h3>Retirement Planning</h3>
+          <p>Whether you're 30 or 60, it's never too early or too late to plan for retirement. We build a strategy that lets you retire on your terms — right here in Texas.</p>
+          <a href="{% url 'consultation_request' %}" class="btn btn-primary btn-sm mt-24">Plan Retirement</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-body">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:26px;height:26px">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
+            </svg>
+          </div>
+          <h3>Estate Planning</h3>
+          <p>Protect your legacy and ensure your land, assets, and wealth transfer to your loved ones just as you intend. Because what you've built should stay in the family.</p>
+          <a href="{% url 'contact' %}" class="btn btn-primary btn-sm mt-24">Get Started</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats-section section--sm">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <span class="stat-item__num"><span data-count="12000" data-suffix="+">0</span></span>
+        <span class="stat-item__label">Texas Families Protected</span>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-item__num">$<span data-count="2.4" data-suffix="B+" data-decimals="1">0</span></span>
+        <span class="stat-item__label">Assets Under Management</span>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-item__num"><span data-count="15" data-suffix="+">0</span></span>
+        <span class="stat-item__label">Years in Texas</span>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-item__num"><span data-count="98" data-suffix="%">0</span></span>
+        <span class="stat-item__label">Client Satisfaction Rate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY US ===== -->
+<section class="why-section section">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <div class="section-label">Why Redneck.co</div>
+        <h2>The Texas Standard of Trust</h2>
+        <div class="divider"></div>
+        <p class="lead">We believe your financial advisor should be as reliable as a Texas sunrise — always there, always honest, and never letting you down.</p>
+
+        <div class="why-list">
+          <div class="why-item reveal">
+            <span class="why-item__num">01</span>
+            <div class="why-item__content">
+              <h4>No Corporate Runaround</h4>
+              <p>Talk directly to a licensed advisor who knows your name and your situation. No call centers, no scripts.</p>
+            </div>
+          </div>
+          <div class="why-item reveal">
+            <span class="why-item__num">02</span>
+            <div class="why-item__content">
+              <h4>Texas-First Products</h4>
+              <p>Every product we recommend is vetted for Texas families — their needs, their budgets, their values.</p>
+            </div>
+          </div>
+          <div class="why-item reveal">
+            <span class="why-item__num">03</span>
+            <div class="why-item__content">
+              <h4>Claims Advocacy</h4>
+              <p>When the time comes to file a claim, we fight alongside you — not against you. That's our promise.</p>
+            </div>
+          </div>
+          <div class="why-item reveal">
+            <span class="why-item__num">04</span>
+            <div class="why-item__content">
+              <h4>Fiduciary Commitment</h4>
+              <p>We are legally and ethically bound to put your interests first. Always. Your success is our success.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-visual">
+        <div class="why-visual__img">
+          <div class="why-visual__eagle">
+            <svg viewBox="0 0 300 380" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+              <rect width="300" height="380" fill="#0A1628"/>
+              <!-- Subtle grid -->
+              <line x1="0" y1="95" x2="300" y2="95" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <line x1="0" y1="190" x2="300" y2="190" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <line x1="0" y1="285" x2="300" y2="285" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <line x1="75" y1="0" x2="75" y2="380" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <line x1="150" y1="0" x2="150" y2="380" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <line x1="225" y1="0" x2="225" y2="380" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <!-- Eagle -->
+              <ellipse cx="150" cy="200" rx="50" ry="80" fill="#F9F7F2" opacity="0.9"/>
+              <!-- Wings -->
+              <path d="M100 190 C70 160, 20 155, 10 170 C30 162, 60 175, 80 195 C55 185, 25 195, 15 210 C45 197, 80 205, 105 215Z" fill="#F9F7F2" opacity="0.85"/>
+              <path d="M200 190 C230 160, 280 155, 290 170 C270 162, 240 175, 220 195 C245 185, 275 195, 285 210 C255 197, 220 205, 195 215Z" fill="#F9F7F2" opacity="0.85"/>
+              <!-- Head -->
+              <ellipse cx="150" cy="138" rx="30" ry="35" fill="#F9F7F2" opacity="0.9"/>
+              <!-- Beak -->
+              <path d="M150 150 L168 162 L150 167Z" fill="#C9A84C"/>
+              <!-- Eye -->
+              <circle cx="162" cy="135" r="5" fill="#0A1628"/>
+              <circle cx="164" cy="133" r="1.5" fill="white"/>
+              <!-- Tail -->
+              <path d="M125 268 C133 295, 142 310, 150 316 C158 310, 167 295, 175 268Z" fill="#F9F7F2" opacity="0.85"/>
+              <!-- Talons -->
+              <path d="M132 268 L120 290 M132 268 L126 294 M132 268 L135 297" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/>
+              <path d="M168 268 L180 290 M168 268 L174 294 M168 268 L165 297" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/>
+              <!-- Shield -->
+              <path d="M136 165 L164 165 L170 210 L150 222 L130 210Z" fill="#B22234" opacity="0.8"/>
+              <path d="M141 165 L159 165 L164 208 L150 219 L136 208Z" fill="#F9F7F2" opacity="0.4"/>
+              <path d="M145 165 L155 165 L159 207 L150 217 L141 207Z" fill="#0A1628" opacity="0.6"/>
+              <!-- Stars -->
+              <text x="35" y="175" font-size="16" fill="#C9A84C" opacity="0.6">★</text>
+              <text x="249" y="175" font-size="16" fill="#C9A84C" opacity="0.6">★</text>
+              <text x="18" y="215" font-size="11" fill="#C9A84C" opacity="0.4">★</text>
+              <text x="268" y="215" font-size="11" fill="#C9A84C" opacity="0.4">★</text>
+              <!-- Bottom text -->
+              <text x="150" y="350" font-size="9" fill="#C9A84C" opacity="0.4" text-anchor="middle" letter-spacing="4" font-family="sans-serif">E PLURIBUS UNUM</text>
+            </svg>
+          </div>
+        </div>
+        <div class="why-visual__accent"></div>
+        <div class="why-visual__badge">
+          Licensed &<br/>Fiduciary<br/>Advisor
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+{% if testimonials %}
+<section class="testimonials-section section">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label" style="justify-content:center">Testimonials</div>
+      <h2>What Texas Says About Us</h2>
+      <div class="divider divider--center"></div>
+    </div>
+
+    <div class="testimonials-grid">
+      {% for testimonial in testimonials %}
+      <div class="testimonial-card reveal">
+        <div class="testimonial-card__stars">
+          {% for i in "12345" %}
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          {% endfor %}
+        </div>
+        <p class="testimonial-card__quote">{{ testimonial.quote }}</p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">{{ testimonial.client_name|slice:":1" }}</div>
+          <div>
+            <div class="testimonial-card__name">{{ testimonial.client_name }}</div>
+            <div class="testimonial-card__location">{{ testimonial.client_location }}</div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% else %}
+<!-- Static testimonials when no DB data -->
+<section class="testimonials-section section">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label" style="justify-content:center">Testimonials</div>
+      <h2>What Texas Says About Us</h2>
+      <div class="divider divider--center"></div>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-card__stars">
+          {% for i in "12345" %}<svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" fill="#C9A84C"/></svg>{% endfor %}
+        </div>
+        <p class="testimonial-card__quote">"Redneck.co didn't talk to me like I was a number. They sat down, explained everything clearly, and got me a whole life policy that actually fits my family's budget. Couldn't ask for better."</p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">R</div>
+          <div>
+            <div class="testimonial-card__name">Robert "Bobby" Callahan</div>
+            <div class="testimonial-card__location">San Antonio, TX</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-card__stars">
+          {% for i in "12345" %}<svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" fill="#C9A84C"/></svg>{% endfor %}
+        </div>
+        <p class="testimonial-card__quote">"Rolled over my 401(k) after leaving my corporate job and these folks made it painless. My portfolio has grown 14% this year alone. They're the real deal."</p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">L</div>
+          <div>
+            <div class="testimonial-card__name">Linda Hargrove</div>
+            <div class="testimonial-card__location">Houston, TX</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-card__stars">
+          {% for i in "12345" %}<svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" fill="#C9A84C"/></svg>{% endfor %}
+        </div>
+        <p class="testimonial-card__quote">"When my husband passed, Redneck.co walked us through the entire claims process. They fought for us like family. I will recommend them to every Texan I know."</p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">M</div>
+          <div>
+            <div class="testimonial-card__name">Mary Ellen Whitaker</div>
+            <div class="testimonial-card__location">Lubbock, TX</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-banner section--sm">
+  <div class="container">
+    <div class="cta-banner__content">
+      <div>
+        <h2>Ready to Secure Your Texas Future?</h2>
+        <p>Get a no-obligation quote in minutes. Talk to a real Texan who understands your needs.</p>
+      </div>
+      <div class="d-flex gap-16 flex-wrap">
+        <a href="{% url 'quote_request' %}" class="btn btn-gold btn-lg">Get a Free Quote</a>
+        <a href="{% url 'contact' %}" class="btn btn-outline btn-lg">Talk to an Advisor</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

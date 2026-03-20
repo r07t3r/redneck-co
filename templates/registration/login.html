@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sign In — Redneck.co{% endblock %}
+
+{% block content %}
+<div class="auth-page">
+  <div class="auth-box">
+    <div class="auth-box__logo">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:60px;height:60px;margin:0 auto 12px">
+        <rect width="60" height="60" rx="8" fill="#0A1628"/>
+        <path d="M30 10 C28 13, 20 14, 17 18 C14 22, 19 24, 22 24 L19 30 C16 33, 13 36, 15 39 C17 42, 21 40, 24 37 L30 44 L36 37 C39 40, 43 42, 45 39 C47 36, 44 33, 41 30 L38 24 C41 24, 46 22, 43 18 C40 14, 32 13, 30 10Z" fill="#C9A84C" opacity="0.9"/>
+      </svg>
+      <div class="auth-box__brand">Redneck.co</div>
+      <div class="auth-box__tagline">Texas Built · American Strong</div>
+    </div>
+
+    <h3 style="text-align:center;margin-bottom:8px;font-size:1.3rem">Welcome Back</h3>
+    <p style="text-align:center;font-size:0.88rem;margin-bottom:32px">Sign in to your Redneck.co account</p>
+
+    {% if form.errors %}
+    <div style="background:rgba(178,34,52,0.08);border:1px solid rgba(178,34,52,0.2);border-radius:var(--radius-sm);padding:14px 18px;margin-bottom:20px;font-size:0.88rem;color:var(--red-dark)">
+      Invalid username or password. Please try again.
+    </div>
+    {% endif %}
+
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}" />
+
+      <div class="form-group" style="margin-bottom:16px">
+        <label class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Your username" autocomplete="username" required />
+      </div>
+
+      <div class="form-group" style="margin-bottom:28px">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Your password" autocomplete="current-password" required />
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg w-100">
+        Sign In
+        <svg viewBox="0 0 20 20" fill="currentColor" style="width:18px;height:18px">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+    </form>
+
+    <div style="text-align:center;margin-top:24px;font-size:0.85rem;color:var(--gray)">
+      Need help? Call us at <a href="tel:5125550178" style="color:var(--navy);font-weight:600">(512) 555-0178</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
