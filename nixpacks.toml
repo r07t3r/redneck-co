@@ -1,11 +1,15 @@
 [phases.setup]
-nixPkgs = ["python312", "python312Packages.pip"]
+nixPkgs = ["python312", "python312Packages.pip", "python312Packages.virtualenv", "gcc", "libpq"]
 
 [phases.install]
-cmds = ["pip install -r requirements.txt"]
+cmds = [
+  "python -m venv /opt/venv",
+  "/opt/venv/bin/pip install --upgrade pip",
+  "/opt/venv/bin/pip install -r requirements.txt"
+]
 
 [phases.build]
-cmds = ["python manage.py collectstatic --noinput"]
+cmds = ["/opt/venv/bin/python manage.py collectstatic --noinput"]
 
 [start]
-cmd = "gunicorn redneck.wsgi --bind 0.0.0.0:$PORT --workers 2 --timeout 120"
+cmd = "/opt/venv/bin/gunicorn redneck.wsgi --bind 0.0.0.0:$PORT --workers 2 --timeout 120"
